@@ -19,7 +19,8 @@ class ConsoleScript(object):
         self.portal = self.app.objectValues('Plone Site')[0]
         setSite(self.portal)
         self.app.REQUEST.other['PARENTS'] = [self.portal, self.app]
-        self.app.REQUEST.other['VirtualRootPhysicalPath'] = ('', self.portal.id)
+        self.app.REQUEST.other['VirtualRootPhysicalPath'] = (
+            '', self.portal.id)
 
         log.setLevel(logging.INFO)
         handler = logging.StreamHandler(sys.stdout)
