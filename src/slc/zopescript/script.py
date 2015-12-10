@@ -11,12 +11,15 @@ log = logging.getLogger()
 
 
 class ConsoleScript(object):
-    def __call__(self, config_file, run_as):
+    def __call__(self, config_file, run_as, server_url=None, **environ):
         Zope2.Startup.run.configure(config_file)
-        self.app = makerequest(Zope2.app())
+        environ['SERVER_URL'] = server_url
+        self.app = makerequest(Zope2.app(), environ=environ)
         setHooks()
         self.portal = self.app.objectValues('Plone Site')[0]
         setSite(self.portal)
+        self.app.REQUEST.other['PARENTS'] = [self.portal, self.app]
+        self.app.REQUEST.other['VirtualRootPhysicalPath'] = ('', self.portal.id)
 
         log.setLevel(logging.INFO)
         handler = logging.StreamHandler(sys.stdout)
