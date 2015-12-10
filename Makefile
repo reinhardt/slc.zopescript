@@ -39,9 +39,6 @@ tests: .installed.cfg
 	@bin/test
 	@bin/flake8 setup.py
 	@bin/flake8 src/slc/zopescript
-	@for pt in `find src/slc/zopescript -name "*.pt"` ; do bin/zptlint $$pt; done
-	@for xml in `find src/slc/zopescript -name "*.xml"` ; do bin/zptlint $$xml; done
-	@for zcml in `find src/slc/zopescript -name "*.zcml"` ; do bin/zptlint $$zcml; done
 
 clean:
 	@rm -rf .coverage .installed.cfg .mr.developer.cfg bin docs/html htmlcov parts develop-eggs \
