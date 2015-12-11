@@ -1,3 +1,6 @@
+.. image:: https://secure.travis-ci.org/plone/plone.api.png
+    :target: http://travis-ci.org/#!/plone/plone.api
+
 ====================
 slc.zopescript
 ====================
