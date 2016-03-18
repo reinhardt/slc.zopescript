@@ -4,7 +4,7 @@ Changelog
 =========
 
 
-1.0.2 (unreleased)
+1.0.2 (2016-03-18)
 ------------------
 
 - better manifest [reinhardt]
