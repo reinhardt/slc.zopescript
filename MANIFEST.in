@@ -1,2 +1,3 @@
-graft src/slc
-include *.cfg *.rst *.in
+recursive-include src/slc *
+recursive-include docs *
+global-exclude *pyc
