@@ -4,8 +4,8 @@ Changelog
 =========
 
 
-1.1 (unreleased)
-----------------
+1.0.1 (2016-03-18)
+------------------
 
 - Allow passing a context_path [reinhardt]
 - Updated README [reinhardt]
