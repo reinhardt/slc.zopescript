@@ -22,7 +22,7 @@ setup(
     long_description=long_description,
     # Get more from http://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
-        "Framework :: Zope",
+        "Framework :: Zope2",
         "Programming Language :: Python",
     ],
     keywords='Zope console script',
