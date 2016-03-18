@@ -7,7 +7,7 @@ Changelog
 1.0.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- better manifest [reinhardt]
 
 
 1.0.1 (2016-03-18)
