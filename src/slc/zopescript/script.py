@@ -29,11 +29,6 @@ class ConsoleScript(object):
         self.app.REQUEST.other['VirtualRootPhysicalPath'] = (
             '', self.portal.id)
 
-        if context_path is not None:
-            self.context = self.portal.restrictedTraverse(context_path)
-        else:
-            self.context = self.portal
-
         log.setLevel(logging.INFO)
         handler = logging.StreamHandler(sys.stdout)
         formatter = logging.Formatter(
@@ -42,6 +37,10 @@ class ConsoleScript(object):
         log.addHandler(handler)
 
         with api.env.adopt_user(username=run_as):
+            if context_path is not None:
+                self.context = self.portal.restrictedTraverse(context_path)
+            else:
+                self.context = self.portal
             self.run()
         transaction.commit()
 
