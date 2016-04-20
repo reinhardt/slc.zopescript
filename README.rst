@@ -26,7 +26,9 @@ instance and request available.
 
 To create a console script you can derive a class from
 `slc.zopescript.script.ConsoleScript` and implement the `run()` method. The
-Zope app will be available as self.app and the first Plone Site as self.portal.
+Zope app will be available as self.app and the first Plone Site as self.portal. 
+If you pass a context_path then self.context will be the object represented by
+this path; otherwise self.context will be the portal as well.
 A request will be set up so that you can e.g. call browser views.
 Example::
 
