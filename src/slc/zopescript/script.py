@@ -12,12 +12,18 @@ log = logging.getLogger()
 
 class ConsoleScript(object):
     def __call__(self, config_file, run_as, server_url=None, context_path=None,
-                 **environ):
+                 portal_id=None, **environ):
         Zope2.Startup.run.configure(config_file)
         environ['SERVER_URL'] = server_url
         self.app = makerequest(Zope2.app(), environ=environ)
         setHooks()
-        self.portal = self.app.objectValues('Plone Site')[0]
+        if portal_id is not None:
+            self.portal = self.app[portal_id]
+        else:
+            portals = self.app.objectValues('Plone Site')
+            if len(portals) > 1:
+                log.warn('More than one portal - using first one')
+            self.portal = portals[0]
         setSite(self.portal)
         self.app.REQUEST.other['PARENTS'] = [self.portal, self.app]
         self.app.REQUEST.other['VirtualRootPhysicalPath'] = (
