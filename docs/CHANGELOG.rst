@@ -4,7 +4,7 @@ Changelog
 =========
 
 
-1.0.3 (unreleased)
+1.0.3 (2016-05-19)
 ------------------
 
 - traverse to context as run_as user [reinhardt]
