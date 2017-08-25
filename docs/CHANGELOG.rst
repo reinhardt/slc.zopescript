@@ -7,7 +7,14 @@ Changelog
 1.0.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Improve log handling:
+
+  * only log errors during startup
+  * log INFO to stdout
+  * log ERROR to stderr
+
+  This makes it possible to only escalate errors in cronjobs and send
+  normal logging to /dev/null
 
 
 1.0.3 (2016-05-19)

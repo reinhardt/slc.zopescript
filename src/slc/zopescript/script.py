@@ -13,9 +13,33 @@ log = logging.getLogger()
 class ConsoleScript(object):
     def __call__(self, config_file, run_as, server_url=None, context_path=None,
                  portal_id=None, **environ):
+
+        # Zope automatically adds a StartupHandler
+        # we're only interested in ERRORs during startup
+        log.setLevel(logging.ERROR)
+
         Zope2.Startup.run.configure(config_file)
         environ['SERVER_URL'] = server_url
         self.app = makerequest(Zope2.app(), environ=environ)
+
+        # after startup, remove the StarupHandler and reset level
+        log.handlers = []
+        log.setLevel(0)
+
+        # 2 handlers: INFO to stdout, ERROR to stderr
+        stdout = logging.StreamHandler(sys.stdout)
+        stderr = logging.StreamHandler(sys.stderr)
+        formatter = logging.Formatter(
+            "%(asctime)s %(levelname)s %(name)s %(message)s",
+            "%Y-%m-%d %H:%M:%S"
+        )
+        stdout.setFormatter(formatter)
+        stdout.setLevel(logging.INFO)
+        log.addHandler(stdout)
+        stderr.setFormatter(formatter)
+        stderr.setLevel(logging.ERROR)
+        log.addHandler(stderr)
+
         setHooks()
         if portal_id is not None:
             self.portal = self.app[portal_id]
@@ -28,13 +52,6 @@ class ConsoleScript(object):
         self.app.REQUEST.other['PARENTS'] = [self.portal, self.app]
         self.app.REQUEST.other['VirtualRootPhysicalPath'] = (
             '', self.portal.id)
-
-        log.setLevel(logging.INFO)
-        handler = logging.StreamHandler(sys.stdout)
-        formatter = logging.Formatter(
-            "%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-        handler.setFormatter(formatter)
-        log.addHandler(handler)
 
         with api.env.adopt_user(username=run_as):
             if context_path is not None:
