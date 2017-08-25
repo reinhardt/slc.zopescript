@@ -18,15 +18,18 @@ class ConsoleScript(object):
         # we're only interested in ERRORs during startup
         log.setLevel(logging.ERROR)
 
-        Zope2.Startup.run.configure(config_file)
+        starter = Zope2.Startup.run.configure(config_file)
         environ['SERVER_URL'] = server_url
         self.app = makerequest(Zope2.app(), environ=environ)
 
-        # after startup, remove the StarupHandler and reset level
+        # after startup, remove the StartupHandler
+        # and init the instance's event.log
         log.handlers = []
+        if starter.cfg.eventlog is not None:
+             starter.cfg.eventlog()
         log.setLevel(0)
 
-        # 2 handlers: INFO to stdout, ERROR to stderr
+        # add 2 handlers: INFO to stdout, ERROR to stderr
         stdout = logging.StreamHandler(sys.stdout)
         stderr = logging.StreamHandler(sys.stderr)
         formatter = logging.Formatter(

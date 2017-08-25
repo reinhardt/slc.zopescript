@@ -12,9 +12,11 @@ Changelog
   * only log errors during startup
   * log INFO to stdout
   * log ERROR to stderr
+  * log to instance's event.log too
 
-  This makes it possible to only escalate errors in cronjobs and send
-  normal logging to /dev/null
+  This makes it possible to only escalate errors in cronjobs, send
+  normal logging to /dev/null and protocol what has been done in
+  the instance.log
 
   [frisi]
 
