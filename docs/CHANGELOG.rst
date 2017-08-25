@@ -16,6 +16,8 @@ Changelog
   This makes it possible to only escalate errors in cronjobs and send
   normal logging to /dev/null
 
+  [frisi]
+
 
 1.0.3 (2016-05-19)
 ------------------
