@@ -7,7 +7,18 @@ Changelog
 1.0.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Improve log handling:
+
+  * only log errors during startup
+  * log INFO to stdout
+  * log ERROR to stderr
+  * log to instance's event.log too
+
+  This makes it possible to only escalate errors in cronjobs, send
+  normal logging to /dev/null and protocol what has been done in
+  the instance.log
+
+  [frisi]
 
 
 1.0.3 (2016-05-19)
