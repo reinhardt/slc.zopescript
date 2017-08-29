@@ -26,7 +26,7 @@ class ConsoleScript(object):
         # and init the instance's event.log
         log.handlers = []
         if starter.cfg.eventlog is not None:
-             starter.cfg.eventlog()
+            starter.cfg.eventlog()
         log.setLevel(0)
 
         # add 2 handlers: INFO to stdout, ERROR to stderr
