@@ -4,7 +4,7 @@ Changelog
 =========
 
 
-1.0.4 (unreleased)
+1.0.4 (2017-08-29)
 ------------------
 
 - Improve log handling:
