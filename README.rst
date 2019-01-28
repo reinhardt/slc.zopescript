@@ -1,5 +1,5 @@
-.. image:: https://secure.travis-ci.org/plone/plone.api.png
-    :target: http://travis-ci.org/#!/plone/plone.api
+.. image:: https://secure.travis-ci.org/syslabcom/slc.zopescript.png
+    :target: http://travis-ci.org/#!/syslabcom/slc.zopescript
 
 ====================
 slc.zopescript
