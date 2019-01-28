@@ -10,23 +10,15 @@ import transaction
 log = logging.getLogger()
 
 
-class ConsoleScript(object):
-    def __call__(self, config_file, run_as, server_url=None, context_path=None,
+class InstanceScript(object):
+    def __init__(self, app):
+        self.app = app
+
+    def __call__(self, run_as, server_url=None, context_path=None,
                  portal_id=None, **environ):
-
-        # Zope automatically adds a StartupHandler
-        # we're only interested in ERRORs during startup
-        log.setLevel(logging.ERROR)
-
-        starter = Zope2.Startup.run.configure(config_file)
         environ['SERVER_URL'] = server_url
-        self.app = makerequest(Zope2.app(), environ=environ)
+        self.app = makerequest(self.app, environ=environ)
 
-        # after startup, remove the StartupHandler
-        # and init the instance's event.log
-        log.handlers = []
-        if starter.cfg.eventlog is not None:
-            starter.cfg.eventlog()
         log.setLevel(0)
 
         # add 2 handlers: INFO to stdout, ERROR to stderr
@@ -51,6 +43,7 @@ class ConsoleScript(object):
             if len(portals) > 1:
                 log.warn('More than one portal - using first one')
             self.portal = portals[0]
+        self.portal.setupCurrentSkin(self.app.REQUEST)
         setSite(self.portal)
         self.app.REQUEST.other['PARENTS'] = [self.portal, self.app]
         self.app.REQUEST.other['VirtualRootPhysicalPath'] = (
@@ -66,3 +59,24 @@ class ConsoleScript(object):
 
     def run(self):
         raise NotImplementedError
+
+
+class ConsoleScript(InstanceScript):
+    def __init__(self):
+        pass
+
+    def __call__(self, config_file, *args, **kwargs):
+        # Zope automatically adds a StartupHandler
+        # we're only interested in ERRORs during startup
+        log.setLevel(logging.ERROR)
+
+        starter = Zope2.Startup.run.configure(config_file)
+        self.app = Zope2.app()
+
+        # after startup, remove the StartupHandler
+        # and init the instance's event.log
+        log.handlers = []
+        if starter.cfg.eventlog is not None:
+            starter.cfg.eventlog()
+
+        super(ConsoleScript, self).__call__(*args, **kwargs)
