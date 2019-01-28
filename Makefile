@@ -27,8 +27,8 @@ bin/sphinx-build: .installed.cfg
 .installed.cfg: bin/buildout buildout.cfg buildout.d/*.cfg setup.py
 	bin/buildout $(options)
 
-bin/buildout: bin/python buildout.cfg bootstrap.py
-	bin/python bootstrap.py
+bin/buildout: bin/python buildout.cfg
+	bin/pip install -r requirements.txt
 	@touch $@
 
 bin/python:
