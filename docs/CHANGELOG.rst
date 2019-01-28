@@ -4,7 +4,7 @@ Changelog
 =========
 
 
-1.0.5 (unreleased)
+1.1.0 (2019-01-28)
 ------------------
 
 - Added InstanceScript class for use with `instance run`.
