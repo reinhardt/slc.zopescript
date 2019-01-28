@@ -6,3 +6,4 @@ graft buildout.d
 include *.py
 include Makefile
 include buildout.cfg
+include *.txt
