@@ -24,6 +24,7 @@ setup(
     classifiers=[
         "Framework :: Zope2",
         "Programming Language :: Python",
+        "Programming Language :: Python :: 2.7",
     ],
     keywords='Zope console script',
     author='Syslab.com GmbH',

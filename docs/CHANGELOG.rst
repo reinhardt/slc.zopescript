@@ -7,7 +7,8 @@ Changelog
 1.0.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Added InstanceScript class for use with `instance run`.
+  [reinhardt]
 
 
 1.0.4 (2017-08-29)
