@@ -7,7 +7,8 @@ Changelog
 1.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- ZCML namespace cleanup.
+  [thet]
 
 
 1.1.0 (2019-01-28)
