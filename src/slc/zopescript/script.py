@@ -70,13 +70,19 @@ class ConsoleScript(InstanceScript):
         # we're only interested in ERRORs during startup
         log.setLevel(logging.ERROR)
 
-        starter = Zope2.Startup.run.configure(config_file)
+        try:
+            from Zope2.Startup.run import configure_wsgi
+            starter = configure_wsgi(r'%s' % config_file)
+        except ImportError:
+            from ZServer.Zope2.Startup.run import configure
+            starter = configure(config_file)
         self.app = Zope2.app()
 
         # after startup, remove the StartupHandler
         # and init the instance's event.log
         log.handlers = []
-        if starter.cfg.eventlog is not None:
-            starter.cfg.eventlog()
+        eventlog = getattr(starter.cfg, "eventlog", None)
+        if eventlog is not None:
+            eventlog()
 
         super(ConsoleScript, self).__call__(*args, **kwargs)
