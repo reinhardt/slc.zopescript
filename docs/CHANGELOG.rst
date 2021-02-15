@@ -4,6 +4,12 @@ Changelog
 =========
 
 
+1.1.2 (unreleased)
+------------------
+
+- Support for WSGI.
+  [reinhardt]
+
 1.1.1 (2021-02-15)
 ------------------
 
