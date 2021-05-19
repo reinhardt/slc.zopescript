@@ -74,7 +74,13 @@ class ConsoleScript(InstanceScript):
             from Zope2.Startup.run import configure_wsgi
             starter = configure_wsgi(r'%s' % config_file)
         except ImportError:
-            from ZServer.Zope2.Startup.run import configure
+            try:
+                from ZServer.Zope2.Startup.run import configure
+            except ImportError:
+                try:
+                    from Zope2 import configure
+                except ImportError:
+                    from Zope import configure
             starter = configure(config_file)
         self.app = Zope2.app()
 

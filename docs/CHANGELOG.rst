@@ -7,7 +7,8 @@ Changelog
 1.1.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Support for older Plone/Zope versions.
+  [reinhardt]
 
 
 1.1.2 (2021-02-15)
