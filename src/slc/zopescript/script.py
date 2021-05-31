@@ -19,7 +19,8 @@ class InstanceScript(object):
         environ['SERVER_URL'] = server_url
         self.app = makerequest(self.app, environ=environ)
 
-        log.setLevel(0)
+        log.handlers = []
+        log.setLevel(logging.NOTSET)
 
         # add 2 handlers: INFO to stdout, ERROR to stderr
         stdout = logging.StreamHandler(sys.stdout)
