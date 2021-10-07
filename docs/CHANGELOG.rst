@@ -9,6 +9,8 @@ Changelog
 
 - Support for older Plone/Zope versions.
   [reinhardt]
+- Prevent the log level getting set to DEBUG
+  [goibhniu]
 
 
 1.1.2 (2021-02-15)
