@@ -4,7 +4,7 @@ Changelog
 =========
 
 
-1.1.3 (unreleased)
+1.1.3 (2021-10-07)
 ------------------
 
 - Support for older Plone/Zope versions.
