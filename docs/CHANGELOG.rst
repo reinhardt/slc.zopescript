@@ -7,7 +7,8 @@ Changelog
 1.1.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix for Unauthorized on transaction commit.
+  [reinhardt]
 
 
 1.1.3 (2021-10-07)

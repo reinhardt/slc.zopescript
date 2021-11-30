@@ -56,7 +56,7 @@ class InstanceScript(object):
             else:
                 self.context = self.portal
             self.run()
-        transaction.commit()
+            transaction.commit()
 
     def run(self):
         raise NotImplementedError
