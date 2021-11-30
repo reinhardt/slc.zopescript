@@ -4,7 +4,7 @@ Changelog
 =========
 
 
-1.1.4 (unreleased)
+1.1.4 (2021-11-30)
 ------------------
 
 - Fix for Unauthorized on transaction commit.
