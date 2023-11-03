@@ -4,10 +4,10 @@ Changelog
 =========
 
 
-1.1.5 (unreleased)
-------------------
+2.0.0a1 (2023-11-03)
+--------------------
 
-- Nothing changed yet.
+- Remove the includeDependecies directive from the package configure.zcml
 
 
 1.1.4 (2021-11-30)
