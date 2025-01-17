@@ -4,7 +4,7 @@ Changelog
 =========
 
 
-2.0.0a2 (unreleased)
+2.0.0a2 (2025-01-17)
 --------------------
 
 - Stable release with no changes since the latest alpha
