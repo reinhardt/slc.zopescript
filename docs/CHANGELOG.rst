@@ -7,7 +7,7 @@ Changelog
 2.0.0a2 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Stable release with no changes since the latest alpha
 
 
 2.0.0a1 (2023-11-03)
