@@ -17,7 +17,7 @@ long_description = \
 
 setup(
     name='slc.zopescript',
-    version='2.0.0',
+    version='2.0.1.dev0',
     description="Base classes for running code as Zope console scripts",
     long_description=long_description,
     # Get more from http://pypi.python.org/pypi?%3Aaction=list_classifiers
